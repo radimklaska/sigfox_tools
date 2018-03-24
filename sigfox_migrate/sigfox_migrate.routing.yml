@@ -1,0 +1,11 @@
+
+sigfox_migrate.migration_config_form:
+  path: '/admin/config/sigfox_migrate/migrationconfig'
+  defaults:
+    _form: '\Drupal\sigfox_migrate\Form\MigrationConfigForm'
+    _title: 'Sigfox migration'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+

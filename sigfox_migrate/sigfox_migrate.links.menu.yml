@@ -1,0 +1,7 @@
+sigfox_migrate.migration_config_form:
+  title: 'Sigfox migration'
+  route_name: sigfox_migrate.migration_config_form
+  description: 'Configure Sigfox migration.'
+  parent: system.admin_config_system
+  weight: 99
+

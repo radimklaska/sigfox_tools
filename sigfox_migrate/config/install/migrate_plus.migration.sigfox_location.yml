@@ -1,0 +1,55 @@
+id: sigfox_location
+label: Migration of location gata from Sigfox
+group: sigfox
+source:
+  plugin: sigfoxurl
+  data_fetcher_plugin: http
+  data_parser_plugin: sigfoxjson
+  urls: https://USERNAME:PASSWORD@backend.sigfox.com/api/devices/DEVICEID/messages
+  item_selector: data
+  fields:
+    -
+      name: device
+      label: 'Device identifier'
+      selector: device
+    -
+      name: time
+      label: 'Timestamp'
+      selector: time
+    -
+      name: data
+      label: 'Data'
+      selector: data
+    -
+      name: seqNumber
+      label: 'Sequential number'
+      selector: seqNumber
+  ids:
+    time:
+      type: integer
+
+destination:
+  plugin: entity:node
+
+process:
+  type:
+    plugin: default_value
+    default_value: measurement
+  title: seqNumber
+  field_location/lat: data_lat
+  field_location/lng: data_long
+  field_data: data
+  created: time
+  changed: time
+  promote:
+    plugin: default_value
+    default_value: 0
+  sticky:
+    plugin: default_value
+    default_value: 0
+  uid:
+    plugin: default_value
+    default_value: 0
+
+migration_dependencies: {}
+dependencies: {}

@@ -1,0 +1,18 @@
+type: module
+name: Sigfox Migrate
+description: 'Sigfox Migrate.'
+package: Sigfox
+core: 8.x
+dependencies:
+  - drupal:migrate
+  - migrate_plus:migrate_plus
+  - migrate_tools:migrate_tools
+  - sigfox_storage_measurement:sigfox_storage_measurement
+# not needed, nice to have
+  - drupal:big_pipe
+  - devel:devel
+  - devel:kint
+  - admin_toolbar:admin_toolbar
+  - admin_toolbar:admin_toolbar_tools
+  - features:features
+  - features:features_ui

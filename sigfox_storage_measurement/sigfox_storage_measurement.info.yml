@@ -1,0 +1,13 @@
+name: Measurement
+description: 'Provides Measurement content type and related configuration. '
+type: module
+core: 8.x
+dependencies:
+  - field
+  - geolocation
+  - menu_ui
+  - node
+  - path
+  - user
+  - views
+package: Sigfox

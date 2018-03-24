@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.measurement.field_data
+    - field.field.node.measurement.field_location
+    - node.type.measurement
+  module:
+    - geolocation
+    - user
+id: node.measurement.default
+targetEntityType: node
+bundle: measurement
+mode: default
+content:
+  field_data:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_location:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: geolocation_latlng
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }
