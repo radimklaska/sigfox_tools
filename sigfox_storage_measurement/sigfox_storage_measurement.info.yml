@@ -8,6 +8,7 @@ dependencies:
   - menu_ui
   - node
   - path
+  - sigfox_storage_device
   - user
   - views
 package: Sigfox

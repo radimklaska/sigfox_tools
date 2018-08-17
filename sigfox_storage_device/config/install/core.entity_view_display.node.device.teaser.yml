@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.device.field_owner
+    - field.field.node.device.field_sigfox_url
+    - node.type.device
+  module:
+    - user
+id: node.device.teaser
+targetEntityType: node
+bundle: device
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_owner: true
+  field_sigfox_url: true

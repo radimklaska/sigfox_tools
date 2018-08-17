@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sigfox_url
+    - node.type.device
+id: node.device.field_sigfox_url
+field_name: field_sigfox_url
+entity_type: node
+bundle: device
+label: 'Sigfox URL'
+description: 'E.g. https://XXXXXXXXXXXXXXXXXXXXXX:XXXXXXXXXXXXXXXXXXXXXXXXXXXX@backend.sigfox.com/api/devices/XXXXXX/messages'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
