@@ -1,0 +1,9 @@
+name: 'Sigfox Fetch'
+type: module
+description: 'Fetch data from Sigfox service'
+core: 8.x
+package: 'Sigfox'
+dependencies:
+- sigfox_storage_device
+- sigfox_storage_measurement
+- sigfox_storage_user

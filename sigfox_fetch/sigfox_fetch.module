@@ -1,0 +1,80 @@
+<?php
+
+/**
+ * @file
+ * Contains sigfox_fetch.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function sigfox_fetch_help($route_name, RouteMatchInterface $route_match)
+{
+  switch ($route_name) {
+    // Main module help for the sigfox_fetch module.
+    case 'help.page.sigfox_fetch':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Fetch data from Sigfox service') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function sigfox_fetch_cron()
+{
+  // @ToDo: Drupal batch api.
+  sigfox_fetch_refresh();
+}
+
+/**
+ * Refresh SigFox data.
+ */
+function sigfox_fetch_refresh()
+{
+  $nids = sigfox_fetch_device_nodes();
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+
+  $nodes = $node_storage->loadMultiple($nids);
+  foreach ($nodes as $n) {
+    sigfox_fetch_refresh_device($n);
+  }
+}
+
+/**
+ * Load all sigfox nodes.
+ */
+function sigfox_fetch_device_nodes()
+{
+  $query = \Drupal::entityQuery('node')
+    ->condition('type', 'device');
+  return $query->execute();
+}
+
+/**
+ * Load all sigfox nodes.
+ */
+function sigfox_fetch_refresh_device($n)
+{
+  $device_url = $n->field_sigfox_url->value;
+
+  $response = \Drupal::httpClient()->get($device_url, array('headers' => array('Accept' => 'application/json')));
+  $data = $response->getBody();
+
+  if (empty($data)) {
+    // @Todo: handle this.
+    // drupal_set_message('Empty response.');
+  }
+  else {
+
+    $jsonout = json_decode($data, TRUE);
+    var_dump(array_keys($jsonout));
+
+  }
+}
